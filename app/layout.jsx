@@ -1,9 +1,14 @@
+import '@/assets/styles/globals.css;'
 
-
-const Mainlayout = () => {
+const MainLayout = ({ children }) => {
   return (
-    <div>Mainlayout</div>
-  )
-}
+    <html lang='en'>
+    <body>
+        <div>{children}</div>
+     </body>   
+    </html>
+  );
+};
 
-export default Mainlayout
+export default MainLayout;
+
