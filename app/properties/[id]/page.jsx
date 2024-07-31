@@ -1,10 +1,13 @@
 'use client';
-import { useRouter } from "next/router";
 
-const PropertyPage = () => {
-    const router = useRouter();
+
+const PropertyPage = ({params}) => {
     
-    return <div>Property Page</div>;
-}
+    return (
+    <div>
+        Property Page { params.id }
+    </div>
+    );
+};
  
 export default PropertyPage;        
