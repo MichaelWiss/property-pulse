@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 let connected = false;
 
 const connectDB = async () => {
+    console.log(process.env.MONGODB_URI);
     mongoose.set('strictQuery', true);
 
     // If the database is already connected, don't connect again
