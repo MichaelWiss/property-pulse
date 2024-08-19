@@ -4,8 +4,6 @@ import connectDB from '@/config/database';
 import Property from '@/models/Property';
 
 
-
-
 const HomeProperties = async () => {
     await connectDB();
 

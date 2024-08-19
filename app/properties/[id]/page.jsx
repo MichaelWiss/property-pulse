@@ -1,12 +1,17 @@
-'use client';
+
+import connectDB from "@/config/database"; 
+import Property from "@/models/Property";
 
 
-const PropertyPage = ({params}) => {
-    
+
+const PropertyPage = async ({ params }) => {
+    await connectDB();
+    const property = await Property.findById(params.id).lean();
+
     return (
-    <div>
-        Property Page { params.id }
-    </div>
+    <section>
+        {property.name}
+    </section>
     );
 };
  
