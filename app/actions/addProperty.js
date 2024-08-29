@@ -53,8 +53,14 @@ async function addProperty(formData) {
         },
         images,
     };
+
+    const newProperty = new Property(propertyData);
+    await newProperty.save();
+
+    revalidatePath('/', 'layout');
+
+    redirect(`/properties/${newProperty._id}`);
     
-    console.log(propertyData);
 }
 
 export default addProperty;
