@@ -1,6 +1,25 @@
 'use server';
+import connectDB from "@/config/database";
+import Property from "@/models/Property";
+import { getSessionUser } from "@/utils/getSessionUser";
+import { revalidatePath } from "next/cache";
+import { redirect } from 'next/navigation';
+
+
 
 async function addProperty(formData) {
+    await connectDB();
+
+    const sessionUser = await getSessionUser();
+
+    if (!sessionUser || !sessionUser.userId) {
+        throw new Error('User ID is required');
+    }
+
+    const { userId } = sessionUser;
+
+
+    // Access all values from amenities and images
     const amenities = formData.getAll('amenities');
     const images = formData
     .getAll('images')
@@ -8,6 +27,7 @@ async function addProperty(formData) {
     .map((image) => image.name);
     
     const propertyData = {
+        owner: userId,
         type: formData.get('type'),
         name: formData.get('name'),
         description: formData.get('description'),
@@ -33,6 +53,7 @@ async function addProperty(formData) {
         },
         images,
     };
+    
     console.log(propertyData);
 }
 
