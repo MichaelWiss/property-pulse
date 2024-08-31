@@ -17,7 +17,11 @@ const PropertyImages = ({ images }) => {
                 ) : (
                 <div className="grid grid-cols-2 gap-4">
                     { images.map((image, index) => (
-                        <div key={index} className='cols-span-1'>
+                        <div key={index} className={ `${images.length === 3 && index === 2
+                            ? 'col-span-2' 
+                            : 'col-span-1'
+                         }`}
+                         >
                         <Image 
                             src={image}
                             alt=''
