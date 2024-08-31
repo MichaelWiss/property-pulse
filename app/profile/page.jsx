@@ -7,7 +7,16 @@ import profileDefault from '@/assets/images/profile.png';
 
 
 
-const ProfilePage = () => {
+const ProfilePage = async () => {
+    await connectDB();
+
+    const sessionUser = await getSessionUser();
+
+    const { userId } = sessionUser;
+
+    
+
+
     return (
         <section className="bg-blue-50">
       <div className="container m-auto py-24">
