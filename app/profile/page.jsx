@@ -14,6 +14,10 @@ const ProfilePage = async () => {
 
     const { userId } = sessionUser;
 
+    if (!userId) {
+      throw new Error('User Id is required!');
+    }
+
     
 
 
@@ -25,9 +29,11 @@ const ProfilePage = async () => {
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/4 mx-20 mt-10">
               <div className="mb-4">
-                <img
+                <Image
                   className="h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0"
-                  src="/images/profile.png"
+                  src={ sessionUser.user.image || profileDefault }
+                  width={200}
+                  height={200}
                   alt="User"
                 />
               </div>
