@@ -37,8 +37,8 @@ const ProfilePage = async () => {
                   alt="User"
                 />
               </div>
-              <h2 className="text-2xl mb-4"><span className="font-bold block">Name: </span> John Doe</h2>
-              <h2 className="text-2xl"><span className="font-bold block">Email: </span> john@gmail.com</h2>
+              <h2 className="text-2xl mb-4"><span className="font-bold block">Name: </span> {sessionUser.user.name} </h2>
+              <h2 className="text-2xl"><span className="font-bold block">Email: </span> {sessionUser.user.email}</h2>
             </div>
 
             <div className="md:w-3/4 md:pl-4">
