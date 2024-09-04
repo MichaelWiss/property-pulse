@@ -73,6 +73,7 @@ const Navbar = () => {
                   className="h-10 w-auto"
                   src={ logo }
                   alt="PropertyPulse"
+                  priority={true}
                 />
   
                 <span className="hidden md:block text-white text-2xl font-bold ml-2"
@@ -196,6 +197,7 @@ const Navbar = () => {
                     role="menuitem"
                     tabIndex="-1"
                     id="user-menu-item-0"
+                    onClick={ () => setIsProfileMenuOpen(false) }
                     >Your Profile</Link
                   >
                   <Link
@@ -204,6 +206,7 @@ const Navbar = () => {
                     role="menuitem"
                     tabIndex="-1"
                     id="user-menu-item-2"
+                    onClick={ () => setIsProfileMenuOpen(false) }
                     >Saved Properties</Link
                   >
                   <button
