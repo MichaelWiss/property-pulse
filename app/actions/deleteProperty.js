@@ -17,8 +17,11 @@ async function deleteProperty(propertyId) {
     const property = await Property.findById(propertyId);
 
     if(!property) throw new Error('Property Not Found');
-    
 
+    //verify ownership
+    if (property.owner.toString() !== userId) {
+        through new Error('Unauthorized');
+    }
 }
 
 export default deleteProperty;
