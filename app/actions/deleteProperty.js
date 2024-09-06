@@ -20,8 +20,25 @@ async function deleteProperty(propertyId) {
 
     //verify ownership
     if (property.owner.toString() !== userId) {
-        through new Error('Unauthorized');
+        throw new Error('Unauthorized');
     }
+
+    // extract public Id from image URLS
+    const publicIds = property.images.map((imageUrl) => {
+        const parts = imageUrl.split('/');
+        return parts.at(-1).split('.').at(0);
+    });
+
+    // Delete images from cloudinary
+    if (publicIds.length > 0) {
+        for (let publicId of publicIds) {
+            await cloudinary.uploader.destroy('propertypulse/' + publicId);
+        }
+    }
+
+    await property.deleteOne();
+    
+    revalidatePath('/', 'layout');
 }
 
 export default deleteProperty;
