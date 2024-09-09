@@ -15,6 +15,7 @@ const PropertyEditForm = ({ property }) => {
             id="type"
             name="type"
             className="border rounded w-full py-2 px-3"
+            defaultValue={property.type}
             required
           >
             <option value="Apartment">Apartment</option>
@@ -35,6 +36,7 @@ const PropertyEditForm = ({ property }) => {
             id="name"
             name="name"
             className="border rounded w-full py-2 px-3 mb-2"
+            defaultValue={property.name}
             placeholder="eg. Beautiful Apartment In Miami"
             required
           />
@@ -50,6 +52,7 @@ const PropertyEditForm = ({ property }) => {
             name="description"
             className="border rounded w-full py-2 px-3"
             rows="4"
+            defaultValue={property.description}
             placeholder="Add an optional description of your property"
           ></textarea>
         </div>
@@ -62,12 +65,14 @@ const PropertyEditForm = ({ property }) => {
             name="location.street"
             className="border rounded w-full py-2 px-3 mb-2"
             placeholder="Street"
+            defaultValue={property.location.street}
           />
           <input
             type="text"
             id="city"
             name="location.city"
             className="border rounded w-full py-2 px-3 mb-2"
+            defaultValue={property.location.city}
             placeholder="City"
             required
           />
@@ -76,6 +81,7 @@ const PropertyEditForm = ({ property }) => {
             id="state"
             name="location.state"
             className="border rounded w-full py-2 px-3 mb-2"
+            defaultValue={property.location.state}
             placeholder="State"
             required
           />
@@ -84,6 +90,7 @@ const PropertyEditForm = ({ property }) => {
             id="zipcode"
             name="location.zipcode"
             className="border rounded w-full py-2 px-3 mb-2"
+            defaultValue={property.location.zipcode}
             placeholder="Zipcode"
           />
         </div>
@@ -98,6 +105,7 @@ const PropertyEditForm = ({ property }) => {
               id="beds"
               name="beds"
               className="border rounded w-full py-2 px-3"
+              defaultValue={property.beds}
               required
             />
           </div>
@@ -110,6 +118,7 @@ const PropertyEditForm = ({ property }) => {
               id="baths"
               name="baths"
               className="border rounded w-full py-2 px-3"
+              defaultValue={property.baths}
               required
             />
           </div>
@@ -117,6 +126,7 @@ const PropertyEditForm = ({ property }) => {
             <label
               htmlFor="square_feet"
               className="block text-gray-700 font-bold mb-2"
+              defaultValue={property.square_feet}
               >Square Feet</label
             >
             <input
