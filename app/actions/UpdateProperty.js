@@ -17,7 +17,7 @@ async function updateProperty(propertyId, formData) {
     const { userId } = sessionUser;
 
     const existingProperty = await Property.findById(propertyId);
-    const amenities = formData.getAll('amenities');
+    
 
     // Verify ownership
     if(existingProperty.owner.toString() !== userId) {
@@ -37,7 +37,7 @@ async function updateProperty(propertyId, formData) {
         beds: formData.get('beds'),
         baths: formData.get('baths'),
         square_feet: formData.get('square_feet'),
-        amenities,
+        amenities: formData.getAll('amenities'),
         rates: {
            nightly: formData.get('rates.nightly'),
            weekly: formData.get('rates.weekly'),
@@ -50,8 +50,10 @@ async function updateProperty(propertyId, formData) {
         },
     };
 
-    const updatedProperty = await Property.findByIdAndUpdate
-    (propertyId, propertyData);
+    const updatedProperty = await Property.findByIdAndUpdate(
+        propertyId, 
+        propertyData
+    );
 
         revalidatePath('/', 'layout');
 
