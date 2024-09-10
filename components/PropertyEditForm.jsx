@@ -1,6 +1,11 @@
+import updateProperty from "@/app/actions/UpdateProperty";
+
+
 const PropertyEditForm = ({ property }) => {
+  const updatePropertyById = updateProperty.bind(null, property._id);
+
     return (
-        <form>
+        <form action={updatePropertyById}>
         <h2 className="text-3xl text-center font-semibold mb-6">
           Edit Property
         </h2>
@@ -330,6 +335,7 @@ const PropertyEditForm = ({ property }) => {
                 id="weekly_rate"
                 name="rates.weekly"
                 className="border rounded w-full py-2 px-3"
+                defaultValue={property.rates.weekly}
               />
             </div>
             <div className="flex items-center">
@@ -339,6 +345,7 @@ const PropertyEditForm = ({ property }) => {
                 id="monthly_rate"
                 name="rates.monthly"
                 className="border rounded w-full py-2 px-3"
+                defaultValue={property.rates.monthly}
               />
             </div>
             <div className="flex items-center">
@@ -348,6 +355,7 @@ const PropertyEditForm = ({ property }) => {
                 id="nightly_rate"
                 name="rates.nightly"
                 className="border rounded w-full py-2 px-3"
+                defaultValue={property.rates.nightly}
               />
             </div>
           </div>
@@ -362,8 +370,9 @@ const PropertyEditForm = ({ property }) => {
           <input
             type="text"
             id="seller_name"
-            name="seller_info.name."
+            name="seller_info.name"
             className="border rounded w-full py-2 px-3"
+            defaultValue={property.seller_info.name}
             placeholder="Name"
           />
         </div>
@@ -378,6 +387,7 @@ const PropertyEditForm = ({ property }) => {
             id="seller_email"
             name="seller_info.email"
             className="border rounded w-full py-2 px-3"
+            defaultValue={property.seller_info.email}
             placeholder="Email address"
             required
           />
@@ -393,21 +403,8 @@ const PropertyEditForm = ({ property }) => {
             id="seller_phone"
             name="seller_info.phone"
             className="border rounded w-full py-2 px-3"
+            defaultValue={property.seller_info.phone}
             placeholder="Phone"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="images" className="block text-gray-700 font-bold mb-2"
-            >Images (Select up to 4 images)</label
-          >
-          <input
-            type="file"
-            id="images"
-            name="images"
-            className="border rounded w-full py-2 px-3"
-            accept="image/*"
-            multiple
           />
         </div>
 
@@ -416,7 +413,7 @@ const PropertyEditForm = ({ property }) => {
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
             type="submit"
           >
-           Edit Property
+           Update Property
           </button>
         </div>
       </form>
