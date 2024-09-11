@@ -32,7 +32,13 @@ const PropertyMap = ({ property }) => {
                 }
 
                 const { lat, lng} = res.results[0].geometry.location;
-                console.log(lat, lng);
+                setLat(lat);
+                setLng(lng);
+                setViewport({
+                    ...viewport,
+                    latitude: lat,
+                    longitude: lng,
+                });
             } catch (error) {
                 console.log(error);
                 setGeoCodeError(true);
@@ -43,6 +49,9 @@ const PropertyMap = ({ property }) => {
 
         fetchCoords();
     },[]);
+
+    if(loading) return <h3>Loading...</h3>
+    if(geocodeError) return <div className="text xl">No Location Data Found</div>;
 
     return ( <div>Map</div> );
 }
