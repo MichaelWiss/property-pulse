@@ -4,7 +4,7 @@ import { setDefaults, fromAddress } from "react-geocode";
 
 const PropertyMap = ({ property }) => {
     const [lat, setLat] = useState(null);
-    const [lng, setLng = useState(null);
+    const [lng, setLng] = useState(null);
     const [viewport, setViewport] = useState({
         latitude: 0,
         longitude: 0,
@@ -26,6 +26,13 @@ const PropertyMap = ({ property }) => {
             try {
                 const res = await fromAddress(`${property.location.street} ${property.location.city} ${property.location.state} ${property.location.zipcode}`);
                 // check geocode results
+                if (res.results.length === 0) {
+                    setGeoCodeError(true);
+                    return;
+                }
+
+                const { lat, lng} = res.results[0].geometry.location;
+                console.log(lat, lng);
             } catch (error) {
                 console.log(error);
                 setGeoCodeError(true);
