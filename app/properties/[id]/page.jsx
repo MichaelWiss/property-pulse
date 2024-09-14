@@ -1,14 +1,14 @@
+import connectDB from "@/config/database"; 
 import PropertyHeaderImage from '@/components/PropertyHeaderImage';
 import PropertyDetails from '@/components/PropertyDetails';
 import PropertyImages from '@/components/PropertyImages';
 import BookmarkButton from '@/components/BookmarkButton';
 import ShareButtons from '@/components/ShareButtons';
-import PropertyContactForm from '@/components/PropertyConatactForm';
-import connectDB from "@/config/database"; 
+import PropertyContactForm from '@/components/PropertyContactForm';
 import Property from "@/models/Property";
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
-import { convertToSerializableObject } from '@/components/convertToObject';
+import { convertToSerializeableObject } from '@/utils/convertToObject';
 
 
 
@@ -17,13 +17,13 @@ import { convertToSerializableObject } from '@/components/convertToObject';
 const PropertyPage = async ({ params }) => {
     await connectDB();
     const propertyDoc = await Property.findById(params.id).lean();
-
-    const property = convertToSerializableObject(propertyDoc);
+    const property = convertToSerializeableObject(propertyDoc);
 
     if(!property) {
-        return (<h1 className='text-center text-2xl font-bold'>
+        return (<h1 className='text-center text-2xl font-bold mt-10'>
             Property Not Found
-        </h1>);
+        </h1>
+        );
     }
 
     return (
