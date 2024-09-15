@@ -8,6 +8,6 @@ const  BookmarkButton = ({ property }) => {
         <FaBookmark className='mr-2'/> Bookmark Property
       </button>
     );
-}
+};
  
 export default BookmarkButton;
