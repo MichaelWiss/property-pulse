@@ -1,33 +1,35 @@
-import connectDB from "@/config/database"; 
 import PropertyHeaderImage from '@/components/PropertyHeaderImage';
 import PropertyDetails from '@/components/PropertyDetails';
+import connectDB from "@/config/database"; 
+import Property from "@/models/Property";
 import PropertyImages from '@/components/PropertyImages';
 import BookmarkButton from '@/components/BookmarkButton';
 import ShareButtons from '@/components/ShareButtons';
 import PropertyContactForm from '@/components/PropertyContactForm';
-import Property from "@/models/Property";
+import { convertToSerializeableObject } from '@/utils/convertToObject';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
-import { convertToSerializeableObject } from '@/utils/convertToObject';
+
 
 
 
 
 
 const PropertyPage = async ({ params }) => {
-    await connectDB();
-    const propertyDoc = await Property.findById(params.id).lean();
-    const property = convertToSerializeableObject(propertyDoc);
+  await connectDB();
+  const propertyDoc = await Property.findById(params.id).lean();
+  const property = convertToSerializeableObject(propertyDoc);
 
-    if(!property) {
-        return (<h1 className='text-center text-2xl font-bold mt-10'>
-            Property Not Found
-        </h1>
-        );
-    }
-
+  if (!property) {
     return (
-        <>
+      <h1 className='text-center text-2xl font-bold mt-10'>
+        Property Not Found
+      </h1>
+    );
+  }
+
+  return (
+    <>
       <PropertyHeaderImage image={property.images[0]} />
       <section>
         <div className='container m-auto py-6 px-6'>
