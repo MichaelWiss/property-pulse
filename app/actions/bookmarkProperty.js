@@ -12,6 +12,14 @@ async function bookmarkProperty(propertyId) {
  if (!sessionUser || !sessionUser.userId) {
     throw new Error('User ID is required');
  }
+
+ const { userId } = sessionUser;
+
+ let message;
+
+ 
+
+
 }
 
 export default bookmarkProperty;
