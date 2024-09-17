@@ -23,7 +23,16 @@ async function bookmarkProperty(propertyId) {
 
  if(isBookmarked) {
    // if already bookmarked, then remove
-   
+   user.bookmarks.pull(propertyId);
+   message = 'Bookmark Removed';
+   isBookmarked = true;
+ }
+ await user.save();
+ revalidatePath('/properties/saved', 'page');
+
+ return {
+   message,
+   isBookmarked,
  }
 }
 
