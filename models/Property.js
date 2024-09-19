@@ -5,51 +5,59 @@ const PropertySchema = new Schema(
         owner: {
             type: Schema.Types.ObjectId,
             ref: 'User',
-            required: true
+            required: true,
         },
         name: {
             type: String,
-            required: true
+            required: true,
         },
         type: {
             type: String,
-            required: true
+            required: true,
         },
         description: {
             type: String,
         },
-        location: {
-            street:  String,
-            city: String,
-            state: String,
-            zipcode: String
-            },
+       location: {
+      street: {
+        type: String,
+      },
+      city: {
+        type: String,
+      },
+      state: {
+        type: String,
+      },
+      zipcode: {
+        type: String,
+      },
+    },
             beds: {
                 type: Number,
-                required: true
+                required: true,
             },
             baths: {
                 type: Number,
-                required: true
+                required: true,
             },
             square_feet: {
                 type: Number,
-                required: true
+                required: true,
             },
             amenities: [
                 {
-                type: String
-             }
+                type: String,
+             },
             ],
             rates: {
                 nightly: Number,
                 weekly: Number,
-                monthly: Number
+                monthly: Number,
             },
             seller_info: {
                 name: String,
                 email: String,
-                phone: String
+                phone: String,
             },
             images: [
                 {

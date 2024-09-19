@@ -7,9 +7,6 @@ import ProfileProperties from "@/components/ProfileProperties";
 import { convertToSerializableObject } from "@/utils/convertToObject";
 
 
-
-
-
 const ProfilePage = async () => {
     await connectDB();
 
@@ -18,10 +15,10 @@ const ProfilePage = async () => {
     const { userId } = sessionUser;
 
     if (!userId) {
-      throw new Error('User Id is required!');
+      throw new Error('User ID is required!');
     }
 
-    const propertiesDocs = await Property.find({owner: userId}).lean();
+    const propertiesDocs = await Property.find({ owner: userId }).lean();
    
     const properties = propertiesDocs.map(convertToSerializableObject);
 
