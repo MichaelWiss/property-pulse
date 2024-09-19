@@ -4,7 +4,7 @@ import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import profileDefault from '@/assets/images/profile.png';
 import ProfileProperties from "@/components/ProfileProperties";
-import { convertToSerializableObject } from "@/utils/convertToObject";
+import { convertToSerializeableObject } from "@/utils/convertToObject";
 
 
 const ProfilePage = async () => {
@@ -20,7 +20,7 @@ const ProfilePage = async () => {
 
     const propertiesDocs = await Property.find({ owner: userId }).lean();
    
-    const properties = propertiesDocs.map(convertToSerializableObject);
+    const properties = propertiesDocs.map(convertToSerializeableObject);
 
 
     return (
