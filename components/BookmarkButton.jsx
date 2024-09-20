@@ -4,6 +4,7 @@ import bookmarkProperty from "@/app/actions/bookmarkProperty";
 import { toast } from 'react-toastify';
 import { FaBookmark } from "react-icons/fa";
 import { useSession } from "next-auth/react";
+import checkBookmarkStatus from '@/app/actions/checkBookmarkStatus';
 
 const  BookmarkButton = ({ property }) => {
     const {data: session } = useSession();
@@ -11,6 +12,19 @@ const  BookmarkButton = ({ property }) => {
 
     const [isBookmarked, setIsBookMarked] = useState(false);
     const [loading, isLoading] = useState(true);
+
+    useEffect(() => {
+      if (!userId) {
+        setLoading(false);
+        return;
+      }
+      checkBookmarkStatus(property._id).then((res) => {
+        if(res.error) toast.error(res.error);
+        if (res.isBookmarked) setIsBookMarked(res.isBookmarked);
+        setLoading(false);
+      });
+    }, [property._id, checkBookmarkStatus]);
+
 
     const handleClick = async () => {
         if (!userId) {
