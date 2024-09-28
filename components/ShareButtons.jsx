@@ -32,6 +32,13 @@ const ShareButtons = ({ property }) => {
                     >
                     <TwitterIcon size={40} round={true} />
                 </TwitterShareButton>
+                <WhatsappShareButton
+                     url={shareUrl}
+                     title={property.name}
+                     separator=':: '
+                    >
+                    <WhatsappIcon size={40} round={true} />
+                </WhatsappShareButton>
             </div>
         </>
     );
