@@ -11,8 +11,15 @@ const SearchResultsPage = async ({ searchParams: { location, propertyType } }) =
         $or: [
             {name: locationPattern},
             {description: locationPattern},
-            {location.street: locationPattern},
+            {'location.street': locationPattern},
+            {'location.city': locationPattern},
+            {'location.state': locationPattern},
+            {'location.zipcode': locationPattern},
         ]
+    }
+
+    if (propertyType && propertyType !== 'All') {
+        const typePattern = new RegExp()
     }
 
     return <div>Search Results</div>
