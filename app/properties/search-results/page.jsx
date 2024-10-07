@@ -19,8 +19,13 @@ const SearchResultsPage = async ({ searchParams: { location, propertyType } }) =
     }
 
     if (propertyType && propertyType !== 'All') {
-        const typePattern = new RegExp()
+        const typePattern = new RegExp(propertyType, 'i');
+        query.type = typePattern;
     }
+
+    const propertiesQueryResults = await Property.find(query).lean();
+    const properties = convertToSerializableObject(propertiesQueryResults);
+    console.log(properties);
 
     return <div>Search Results</div>
 };

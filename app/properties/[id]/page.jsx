@@ -9,7 +9,7 @@ import PropertyContactForm from '@/components/PropertyContactForm';
 
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
-import { convertToSerializeableObject } from '@/utils/convertToObject';
+import { convertToSerializableObject } from '@/utils/convertToObject';
 
 
 
@@ -19,7 +19,7 @@ import { convertToSerializeableObject } from '@/utils/convertToObject';
 const PropertyPage = async ({ params }) => {
   await connectDB();
   const propertyDoc = await Property.findById(params.id).lean();
-  const property = convertToSerializeableObject(propertyDoc);
+  const property = convertToSerializableObject(propertyDoc);
 
   if (!property) {
     return (
