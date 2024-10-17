@@ -11,7 +11,7 @@ const  BookmarkButton = ({ property }) => {
     const userId = session?.user?.id;
 
     const [isBookmarked, setIsBookMarked] = useState(false);
-    const [loading, isLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       if (!userId) {

@@ -1,7 +1,22 @@
+'use client';
+import { useEffect } from "react";
+import { useActionState } from "react";
+import { useFormStatus} from 'react-dom';
+import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
+import addMessage from "@/app/actions/addMessage";
+
+
 import { FaPaperPlane } from "react-icons/fa";
 
 const PropertyContactForm = ({ property }) => {
-    return <div className="bg-white p-6 rounded-lg shadow-md">
+    const { data: session } = useSession();
+
+
+
+    return (
+      session && (
+      <div className="bg-white p-6 rounded-lg shadow-md">
     <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
     <form>
     <div className='mb-4'>
@@ -71,6 +86,8 @@ const PropertyContactForm = ({ property }) => {
       </div>
     </form>
   </div>
+    )
+  );
 };
  
 export default PropertyContactForm;
