@@ -1,8 +1,8 @@
 'use server';
 import connectDB from "@/config/database";
-import Property from "@/models/Property";
+import Message from '@/models/Message';
 import { getSessionUser } from "@/utils/getSessionUser";
-import { revalidatePath } from "next/cache";
+
 
 
 
@@ -26,8 +26,16 @@ async function addMessage(formData) {
     const newMessage = new Message({
         sender: userId,
         recipient,
-        
+        property: formData.get('property'),
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        body: formData.get('body'),
     });
+
+    await newMessage.save();
+
+    return {submitted: };
 }
 
 export default addMessage;
