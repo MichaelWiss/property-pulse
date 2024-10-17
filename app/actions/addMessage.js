@@ -1,6 +1,6 @@
 'use server';
 import connectDB from "@/config/database";
-import Message from '@/models/Message';
+import Message from '@/models/message';
 import { getSessionUser } from "@/utils/getSessionUser";
 
 
@@ -35,7 +35,7 @@ async function addMessage(formData) {
 
     await newMessage.save();
 
-    return {submitted: };
+    return {submitted: true};
 }
 
 export default addMessage;
