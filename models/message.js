@@ -1,6 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 
-const UserSchema = new Schema(
+const MessageSchema = new Schema(
     {
         sender: {
             type: Schema.Types.ObjectId,
@@ -39,4 +39,4 @@ const UserSchema = new Schema(
 
 const Message = models.Message || model('Message', MessageSchema);
 
-export default User;
+export default Message;
