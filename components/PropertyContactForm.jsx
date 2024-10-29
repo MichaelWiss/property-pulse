@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from "react";
 import { useActionState } from "react";
-import { useFormStatus} from 'react-dom';
+import { useFormState} from 'react-dom';
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
 import addMessage from "@/app/actions/addMessage";
@@ -10,7 +10,11 @@ import { FaPaperPlane } from "react-icons/fa";
 const PropertyContactForm = ({ property }) => {
     const { data: session } = useSession();
 
-    const {state, formAction} = useFormStatus(addMessage, {});
+    const {state, formAction} = useFormState(addMessage, {});
+
+    useEffect(() => {
+      if (state.error) toast.error(state.error);
+    }, [state]);
 
     if (state.submitted) {
       return 

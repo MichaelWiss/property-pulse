@@ -4,6 +4,7 @@ const UserSchema = new Schema(
     {
         sender: {
             type: Schema.Types.ObjectId,
+            ref: 'User',
             required: true
         },
         recipients: {
@@ -18,7 +19,7 @@ const UserSchema = new Schema(
         },
         name: {
             type: String,
-            required: [true, 'Name is requred']
+            required: [true, 'Name is required']
         },
         email: {
             type: String,
