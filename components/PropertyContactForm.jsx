@@ -5,18 +5,16 @@ import { useFormStatus} from 'react-dom';
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
 import addMessage from "@/app/actions/addMessage";
-
-
 import { FaPaperPlane } from "react-icons/fa";
 
 const PropertyContactForm = ({ property }) => {
     const { data: session } = useSession();
 
     const {state, formAction} = useFormStatus(addMessage, {});
-    if(state.submitted) {
-      return (
-        <p className="text-green-500 mb-4">Your message has been sent</p>
-      );
+
+    if (state.submitted) {
+      return 
+        <p className="text-green-500 mb-4">Your message has been sent</p>;
     }
 
     return (
