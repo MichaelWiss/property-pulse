@@ -9,7 +9,7 @@ import { FaPaperPlane } from "react-icons/fa";
 const PropertyContactForm = ({ property }) => {
     const { data: session } = useSession();
 
-    const {state, formAction} = useFormState(addMessage, {});
+    const [state, formAction] = useFormState(addMessage, {});
 
     useEffect(() => {
       if (state.error) toast.error(state.error);
@@ -28,7 +28,7 @@ const PropertyContactForm = ({ property }) => {
       session && (
       <div className="bg-white p-6 rounded-lg shadow-md">
     <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
-    <form>
+    <form action={formAction}>
     <input 
         type="hidden" 
         id="property" 
