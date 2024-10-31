@@ -39,7 +39,7 @@ const PropertyContactForm = ({ property }) => {
         type="hidden" 
         id="recipient" 
         name="recipient" 
-        defaultValue={property._owner}
+        defaultValue={property.owner}
       />
     <div className='mb-4'>
       <label
@@ -51,6 +51,7 @@ const PropertyContactForm = ({ property }) => {
       <input
         className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
         id='name'
+        name='name'
         type='text'
         placeholder='Enter your name'             
         required
@@ -66,6 +67,7 @@ const PropertyContactForm = ({ property }) => {
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id="email"
+          name='email'
           type="email"
           placeholder="Enter your email"
           required
@@ -81,6 +83,7 @@ const PropertyContactForm = ({ property }) => {
         <input
           className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
           id='phone'
+          name='phone'
           type='text'
           placeholder='Enter your phone number'
         />
@@ -94,6 +97,7 @@ const PropertyContactForm = ({ property }) => {
         </label>
         <textarea
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-44 focus:outline-none focus:shadow-outline"
+          name='message'
           id="message"
           placeholder="Enter your message"
         ></textarea>
