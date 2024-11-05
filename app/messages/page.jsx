@@ -4,6 +4,7 @@ import Message from '@/models/message';
 import '@/models/Property';
 import { convertToSerializableObject } from '@/utils/convertToObject';
 import { getSessionUser } from '@/utils/getSessionUser';
+import MessageCard from '@/components/MessageCard';
 
 const MessagesPage = async () => {
     connectDB();
@@ -44,7 +45,7 @@ const MessagesPage = async () => {
                     {
                         messages.length === 0 ? (<p>You have no messages</p>) : (
                             messages.map((message) => {
-                                <h3 key={message._id}>{message.name}</h3>
+                                <MessageCard key={message._id} message={message} />
                             })
                         )
                     }
