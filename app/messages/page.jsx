@@ -1,6 +1,5 @@
-import React from 'react'
 import connectDB from '@/config/database';
-import Message from '@/models/message';
+import Message from '@/models/Message';
 import MessageCard from '@/components/MessageCard';
 import '@/models/Property';
 import { convertToSerializableObject } from '@/utils/convertToObject';
