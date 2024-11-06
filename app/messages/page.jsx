@@ -1,10 +1,11 @@
 import React from 'react'
 import connectDB from '@/config/database';
 import Message from '@/models/message';
+import MessageCard from '@/components/MessageCard';
 import '@/models/Property';
 import { convertToSerializableObject } from '@/utils/convertToObject';
 import { getSessionUser } from '@/utils/getSessionUser';
-import MessageCard from '@/components/MessageCard';
+
 
 const MessagesPage = async () => {
     connectDB();
