@@ -1,4 +1,4 @@
-const MessageCard = ({message}) => {
+const MessageCard = ({ message }) => {
     return <div>{ message.name }</div>;
 }
  
