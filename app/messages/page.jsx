@@ -6,7 +6,7 @@ import { convertToSerializableObject } from '@/utils/convertToObject';
 import { getSessionUser } from '@/utils/getSessionUser';
 
 
-const MessagesPage = async () => {
+const MessagePage = async () => {
     connectDB();
 
     const sessionUser = await getSessionUser();
@@ -21,7 +21,7 @@ const MessagesPage = async () => {
             .lean();
             
      const unreadMessages  = await Message.find({ recipient: userId, 
-        read: false,})
+        read: false, })
              .sort({ createdAt: -1 })
              .populate('sender', 'username')
              .populate('property', 'name')
@@ -56,4 +56,4 @@ const MessagesPage = async () => {
   );
 };
 
-export default MessagesPage;
+export default MessagePage;
