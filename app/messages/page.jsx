@@ -14,13 +14,13 @@ const MessagePage = async () => {
     const { userId } = sessionUser;
     console.log(userId);
 
-    const readMessages  = await Message.find({ recipient: userId, read: true, })
+    const readMessages = await Message.find({ recipient: userId, read: true, })
             .sort({ createdAt: -1 })
             .populate('sender', 'username')
             .populate('property', 'name')
             .lean();
             
-     const unreadMessages  = await Message.find({ recipient: userId, read: false, })
+     const unreadMessages = await Message.find({ recipient: userId, read: false, })
              .sort({ createdAt: -1 })
              .populate('sender', 'username')
              .populate('property', 'name')
