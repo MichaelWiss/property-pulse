@@ -4,11 +4,11 @@ const UserSchema = new Schema({
     email: {
         type: String,
         unique: [true, 'Email already exists'],
-        required: [true, 'Email is requires']
+        required: [true, 'Email is requires'],
     },
     username: {
         type: String,
-        required: [true, 'Username is required']
+        required: [true, 'Username is required'],
     },
     image: {
         type: String
@@ -17,10 +17,10 @@ const UserSchema = new Schema({
         {
         type: Schema.Types.ObjectId,
         ref: 'Property'
-    }
-    ]
+    },
+    ],
 }, {
-    timestamps: true
+    timestamps: true,
 });
 
 const User = models.User || model('User', UserSchema);
