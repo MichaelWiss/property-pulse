@@ -7,6 +7,11 @@ const MessageCard = ({ message }) => {
         <p className="text-gray-700">
             {message.body}
         </p>
+        <ul className="mt-4">
+            <li>
+                <strong>Reply Email</strong>
+            </li>
+        </ul>
     </div>;
 }
  
