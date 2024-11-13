@@ -13,8 +13,24 @@ const MessageCard = ({ message }) => {
                 <a href={`mailto:${message.email}`} className="text-blue-500">
                     {message.email}
                 </a> 
-            </li>    
+            </li>
+            <li>
+                <strong>Reply Phone:</strong>{' '}
+                <a href={`tel:${message.phone}`} className="text-blue-500">
+                    {message.phone}
+                </a> 
+            </li>
+            <li>
+                <strong>Received:</strong>{' '}
+                 { new Date(message.createdAt).toLocaleString() }
+            </li>        
         </ul>
+        <button className="mt-4 mr-3 bg-blue-500 text-white py-1 px-3 rounded-md">
+            Mark As Read
+        </button>
+        <button className="mt-4 bg-red-500 text-whitepy-1 px-3 rounded-md">
+            Delete
+        </button>
     </div>;
 }
  
