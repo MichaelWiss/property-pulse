@@ -9,8 +9,11 @@ const MessageCard = ({ message }) => {
         </p>
         <ul className="mt-4">
             <li>
-                <strong>Reply Email</strong>
-            </li>
+                <strong>Reply Email:</strong>{' '}
+                <a href={`mailto:${message.email}`} className="text-blue-500">
+                    {message.email}
+                </a> 
+            </li>    
         </ul>
     </div>;
 }
