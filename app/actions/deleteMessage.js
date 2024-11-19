@@ -16,7 +16,11 @@ async function deleteMessage(messageId) {
 
    const message = await Message.findById(messageId);
 
-   
+   if (message.recipient.toString() !== userId) {
+        throw new Error('Unauthorized');
+   }
+
+   await message.deleteOne();
     
     revalidatePath('/', 'layout');
 }
