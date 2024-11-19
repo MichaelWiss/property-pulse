@@ -27,6 +27,10 @@ if(message.recipient.toString() !== userId) {
  message.read =!message.read;
 
  revalidatePath('/messages', 'page');
+
+ await message.save();
+
+ return message.read;
 }
 
 export default markMessageAsRead;
