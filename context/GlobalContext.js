@@ -6,7 +6,7 @@ const GlobalContext = createContext();
 
 // create Provider
 
-export function GlobalProvider({ childre }) {
+export function GlobalProvider({ children }) {
     const [ unreadCount, setUnreadCount ] = useState(0);
 
     return (
