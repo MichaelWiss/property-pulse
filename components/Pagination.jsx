@@ -1,4 +1,5 @@
 
+import Link from 'next/link';
 import React from 'react'
 
 export default function Pagination( { page, pageSize, totalItems }) {
@@ -6,10 +7,14 @@ export default function Pagination( { page, pageSize, totalItems }) {
 
   return (
     <section className="container mx-auto flex justify-center items-center my-8">
-    <a href="#" className="mr-2 px-2 py-1 border border-gray-300 rounded">Previous</a>
+    { page > 1 ? (
+      <Link href={`/properties?page=${page - 1}`} className="mr-2 px-2 py-1 border border-gray-300 rounded">Previous</Link>
+    ) : null }
+    
     <span className="mx-2"> Page { page } of { totalPages }</span>
-
-    <a href="#" className="mL-2 px-2 py-1 border border-gray-300 rounded">Next</a>
+    { page < totalPages ? (
+      <Link href={`/properties?page=${page + 1}`} className="mL-2 px-2 py-1 border border-gray-300 rounded">Next</Link>
+    ) : null}
    
 
     </section>
